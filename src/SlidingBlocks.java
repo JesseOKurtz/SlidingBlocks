@@ -1,6 +1,7 @@
 
 //import java.util.List;
-import java.util.ArrayList;
+	import java.util.ArrayList;
+import java.util.Arrays;
 
 
 
@@ -10,7 +11,7 @@ public class SlidingBlocks implements Comparable<SlidingBlocks>{
 	private char[] currentState;
 	private char[] parentState;
 	private char[]childState;
-	static ArrayList<SlidingBlocks> allChildren = new ArrayList<>();
+	private static ArrayList<SlidingBlocks> allChildren = new ArrayList<>();
 	private int heuristicValue;
 	private int goalCounter;
 	private int parentsG;
@@ -34,11 +35,38 @@ public class SlidingBlocks implements Comparable<SlidingBlocks>{
 	{
 		return this.currentState;
 	}
+	/*public boolean equals(Object o)
+	{
+		SlidingBlocks test = (SlidingBlocks) o;
+		if (test.getState() == this.getState()) return true;
+		else return false;
+	}*/
+	
 	public int getHValue()
 	{
 		return this.heuristicValue;
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(currentState);
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SlidingBlocks other = (SlidingBlocks) obj;
+		if (!Arrays.equals(currentState, other.currentState))
+			return false;
+		return true;
+	}
 	public int getFValue()
 	{
 		return this.f;
