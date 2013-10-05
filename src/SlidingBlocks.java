@@ -91,7 +91,7 @@ public class SlidingBlocks implements Comparable<SlidingBlocks>{
 	
 	private int EvaluateState(char[] currentState){
 		heuristicValue = 0;
-		//should also say if the goal isnt reached that h is at least 1;
+		//should also say if the goal isn't reached that h is at least 1;
 		for (int i=0; i<currentState.length; i++){
 			if (currentState[i] == 'B')
 			{

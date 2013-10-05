@@ -9,7 +9,7 @@ public class StarSearch {
 	private static boolean goalFound = false;
 	private static boolean searchFailed = false;
 	private static int steps = 0;
-	static Queue<SlidingBlocks> frontier = new PriorityQueue<>();//star search class
+	static PriorityQueue<SlidingBlocks> frontier = new PriorityQueue<>();//star search class
 	private static ArrayList<SlidingBlocks> explored = new ArrayList<>();	//add to star search class
 	private static ArrayList<SlidingBlocks> currentChildren = new ArrayList<>();
 	private static ArrayList<SlidingBlocks> solutions = new ArrayList<>();
@@ -18,7 +18,7 @@ public class StarSearch {
 	public static ArrayList<SlidingBlocks> searchPuzzle(SlidingBlocks test)
 			{
 		
-				frontier.clear();//clear at the beginning just incase there is some address
+				frontier.clear();//clear at the beginning just in case there is some data in memory
 				explored.clear();
 				solutions.clear();
 				
@@ -43,23 +43,20 @@ public class StarSearch {
 									{
 										solutions.add(current);
 										System.out.println("Goal Has been Reached");
-										System.out.println("FINAL STATE: "+ current.toString() + " in " + steps + " steps");
+										System.out.println("FINAL STATE: "+ current.toString() + " in " + steps + " steps with a path cost of:" + current.getPathCost() + " and an F value of " + current.getFValue());
 										goalFound = true;
 										return solutions;
 									}
 								else 
 									{
-										System.out.println(current.toString());
+										System.out.println(current.toString()+ " has been added to explored list with F Value: " +current.getFValue());
 										explored.add(current);
-										solutions.add(current);
-										System.out.println("Current node has been added to explored and solutions");
 										currentChildren = SlidingBlocks.generateChildren(current);
 										
 										for (SlidingBlocks each: currentChildren)
 											{
 											if(!frontier.contains(each) && !explored.contains(each))
 												frontier.add(each);
-											
 											}
 		   					
 									}
