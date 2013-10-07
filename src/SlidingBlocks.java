@@ -1,5 +1,7 @@
 
-//import java.util.List;
+/*
+ * 
+ */
 	import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -27,6 +29,8 @@ public class SlidingBlocks implements Comparable<SlidingBlocks>{
 		this.g = g;
 		this.f = heuristicValue + g;
 		this.currentState = currentPuzzle;
+		
+		
 	}
 	public void printState(){
 		System.out.println(currentState);
@@ -92,17 +96,20 @@ public class SlidingBlocks implements Comparable<SlidingBlocks>{
 	private int EvaluateState(char[] currentState){
 		heuristicValue = 0;
 		//should also say if the goal isn't reached that h is at least 1;
-		for (int i=0; i<currentState.length; i++){
+		//EDIT: ATTEMPT AT DOING SO RESULTED IN GOAL STATE EVALUATED AS H=1 WHICH IS INCORRECT
+			
+		for (int i=0; i<currentState.length; i++)
+		{
 			if (currentState[i] == 'B')
 			{
 				heuristicValue++;
 			}
 			else if (currentState[i] == 'W')
 			{
-				return heuristicValue;
+							break;
 			}
-					
 		}
+		
 		
 		return heuristicValue;
 	}

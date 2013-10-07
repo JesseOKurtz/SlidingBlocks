@@ -43,13 +43,15 @@ public class StarSearch {
 									{
 										solutions.add(current);
 										System.out.println("Goal Has been Reached");
-										System.out.println("FINAL STATE: "+ current.toString() + " in " + steps + " steps with a path cost of:" + current.getPathCost() + " and an F value of " + current.getFValue());
+										System.out.println("FINAL STATE: "+ current.toString() + " in " + steps + " steps with a path cost of:" + current.getPathCost() + ", an F value of " + current.getFValue()+ "and, an H value of: "+ current.getHValue());
+
 										goalFound = true;
 										return solutions;
 									}
 								else 
 									{
-										System.out.println(current.toString()+ " has been added to explored list with F Value: " +current.getFValue());
+										System.out.println(current.toString()+ " has been expanded and added to the explored list with F Value: " +current.getFValue()+ " "
+												+ "	and, an H value of: "+ current.getHValue());
 										explored.add(current);
 										currentChildren = SlidingBlocks.generateChildren(current);
 										

@@ -1,12 +1,14 @@
+
+/*
+ * This is the main driver function of the program to Solve the Sliding Blocks Puzzle
+ */
 import java.util.ArrayList;
-//import java.util.PriorityQueue;
-//import java.util.Queue;
+
 
 
 public class SolveBlocks {
-	int Infinity = Integer.MAX_VALUE;
 	public static void main(String[] args) {
-		char[] initialState = {'B', 'B', 'B',' ', 'W', 'W', 'W'}; //gets made into a sliding block node that is passed to the star search clas
+		char[] initialState = {'B', 'B','B', ' ', 'W', 'W', 'W'}; //gets made into a sliding block node that is passed to the star search clas
 		int initialG =0;
 
 		
